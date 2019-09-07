@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<h1>Weather</h1>
+
+<form method="POST">{% csrf_token %}
+    <input type="text" name="name" placeholder="Location"/>
+    <input type="submit", value="Add">
+    {% if message %}
+        <div class="notification ">{{ message }}</div>
+    {% endif %}
+</form>
+
+{% for city_weather in weather_data %}
+<p> City : {{ city_weather.city }}, Temprature : {{ city_weather.temperature }} F, Description : {{ city_weather.description }} </p>
+{% endfor %}
